@@ -14,7 +14,7 @@ fun();
 }
 
 int result(int a, int b, int c){
-    int c;
-    c=a+b+c;
-    return c;
+    int answer;
+    answer=a+b+c;
+    return answer;
 }
