@@ -13,5 +13,9 @@ char chr_c = 97 ;//declaration of variable with type char and initialize it with
 
 float b=25.556; //decleration of variable with type float 
 
+int myArray={34,23,67,1,34};
+int x;
+x=myArray[3];//x now equals 10
+
 
 }
