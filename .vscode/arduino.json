@@ -1,6 +1,5 @@
 {
-    "port": "COM5",
-    "board": "arduino:avr:mega",
-    "configuration": "cpu=atmega2560",
+    "port": "COM11",
+    "board": "arduino:avr:uno",
     "sketch": "arduino\\arduino-coding\\operators\\operators.ino"
 }
