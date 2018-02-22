@@ -11,7 +11,7 @@ void loop(){
 int holder;
 holder=result(3,1,0);
 
-Serial.println("The sum is",holder)
+Serial.println(holder);
 
 fun();
 }
