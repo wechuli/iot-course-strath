@@ -1,5 +1,5 @@
 {
-    "port": "COM11",
+    "port": "COM5",
     "board": "arduino:avr:uno",
     "sketch": "arduino\\arduino-coding\\operators\\operators.ino"
 }
