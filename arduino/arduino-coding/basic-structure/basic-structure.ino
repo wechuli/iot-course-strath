@@ -1,4 +1,4 @@
-//#include <DHT.h> 
+#include <DHT.h> 
 /*
 A header file is a file containing C declarations and macro definitions
  to be shared between several source files. You request the use of
