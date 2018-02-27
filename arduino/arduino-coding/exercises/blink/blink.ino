@@ -15,9 +15,11 @@ void loop(){
     float b=450;
     if(a>b){
         red_on();
+        green_off();
     }
     else if(a<b){
         green_on();
+        red_off();
 
     }
     else{
