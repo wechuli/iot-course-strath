@@ -3,15 +3,9 @@
 #include "Adafruit_MQTT.h"
 #include "Adafruit_MQTT_Client.h"
 
-#define MAX_ADC_READING           1023
-#define ADC_REF_VOLTAGE           3.3
-#define REF_RESISTANCE            4700 // measure this for best results
-#define LUX_CALC_SCALAR           12518931
-#define LUX_CALC_EXPONENT         -1.405
-
 #define DHTPIN 12
 #define DHTTYPE DHT11
-#define pinLight A0
+
 
 /************************* WiFi Access Point *********************************/
 
@@ -81,6 +75,11 @@ void setup() {
 void loop(){
   humidity = dht.readHumidity();
   temperature = dht.readTemperature();
+
+  if (isnan(humidity) || isnan(temperature)) {
+    Serial.println("Failed to read from DHT sensor!");
+    return;
+  }
 
   MQTT_connect();
 

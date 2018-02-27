@@ -111,6 +111,11 @@ int   ldrRawData;
   humidity = dht.readHumidity();
   temperature = dht.readTemperature();
 
+   if (isnan(humidity) || isnan(temperature)) {
+    Serial.println("Failed to read from DHT sensor!");
+    return;
+  }
+
   MQTT_connect();
 
   // Now we can publish stuff!
@@ -158,7 +163,7 @@ blue_off();
   delay(2000);
   red_off();
   blue_off();
-  ESP.deepSleep(0.25e6); //20e6 is 2000s
+  ESP.deepSleep(5e6); //20e6 is 2000s
 }
 
 
