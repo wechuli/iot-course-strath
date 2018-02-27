@@ -12,6 +12,8 @@
 #define DHTPIN 12
 #define DHTTYPE DHT11
 #define pinLight A0
+#define red_led 13
+#define blue_led 14
 
 /************************* WiFi Access Point *********************************/
 
@@ -56,8 +58,11 @@ Adafruit_MQTT_Publish luminosity = Adafruit_MQTT_Publish(&mqtt, AIO_USERNAME "/f
 void MQTT_connect();
 
 void setup() {
+  red_on();  
   Serial.begin(115200);
   delay(10);
+  pinMode(red_led,OUTPUT);
+  pinMode(blue_led,OUTPUT);
 
   Serial.println(F("Initializing Strath Project Demo....Loading"));
 
@@ -74,11 +79,30 @@ void setup() {
   Serial.println();
 
   Serial.println("WiFi connected");
+  blue_on();
   Serial.println("IP address: "); Serial.println(WiFi.localIP());
 
  
 }
 void loop(){
+
+ ldrRawData = analogRead(pinLight);
+  // RESISTOR VOLTAGE_CONVERSION
+  // Convert the raw digital data back to the voltage that was measured on the analog pin
+  resistorVoltage = (float)ldrRawData / MAX_ADC_READING * ADC_REF_VOLTAGE;
+
+  // voltage across the LDR is the 5V supply minus the 5k resistor voltage
+  ldrVoltage = ADC_REF_VOLTAGE - resistorVoltage;
+  
+  // LDR_RESISTANCE_CONVERSION
+  // resistance that the LDR would have for that voltage  
+  ldrResistance = ldrVoltage/resistorVoltage * REF_RESISTANCE;
+  
+  // LDR_LUX
+  // Change the code below to the proper conversion from ldrResistance to
+  // ldrLux
+  ldrLux = 2*LUX_CALC_SCALAR * pow(ldrResistance, LUX_CALC_EXPONENT);
+
   humidity = dht.readHumidity();
   temperature = dht.readTemperature();
 
@@ -103,6 +127,21 @@ void loop(){
     Serial.println(F("OK!"));
   }
 
+  Serial.print(F("\nSending Light Intesnity Values "));
+  Serial.print(ldrLux);
+  Serial.print("...");
+  if (! luminosity.publish(ldrLux)) {
+    Serial.println(F("Failed"));
+  } else {
+    Serial.println(F("OK!"));
+  }
+blue_off();
+  blue_on();
+  blue_off();
+  blue_on();
+  blue_off();
+  blue_on();
+
   // ping the server to keep the mqtt connection alive
   // NOT required if you are publishing once every KEEPALIVE seconds
   /*
@@ -111,8 +150,10 @@ void loop(){
   }
   */
 
-  delay(5000);
-
+  delay(2000);
+  red_off();
+  blue_off();
+  ESP.deepSleep(0.25e6); //20e6 is 2000s
 }
 
 
@@ -141,4 +182,22 @@ void MQTT_connect() {
        }
   }
   Serial.println("MQTT Connected!");
+}
+void red_on(){
+    digitalWrite(red_led,HIGH);
+    delay(2000);
+
+}
+void red_off(){
+   digitalWrite(red_led,LOW);
+    delay(1000); 
+}
+void blue_on(){
+    digitalWrite(blue_led,HIGH);
+    delay(2000);
+
+}
+void blue_off(){
+   digitalWrite(blue_led,LOW);
+    delay(1000); 
 }
