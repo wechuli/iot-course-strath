@@ -86,6 +86,11 @@ void setup() {
 }
 void loop(){
 
+int   ldrRawData;
+  float resistorVoltage, ldrVoltage;
+  float ldrResistance;
+  float ldrLux;
+
  ldrRawData = analogRead(pinLight);
   // RESISTOR VOLTAGE_CONVERSION
   // Convert the raw digital data back to the voltage that was measured on the analog pin
