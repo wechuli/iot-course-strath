@@ -18,7 +18,7 @@
 /************************* WiFi Access Point *********************************/
 
 #define WLAN_SSID       "paulo"
-#define WLAN_PASS       "wechuli2018"
+#define WLAN_PASS       "nairobi@1234"
 
 /************************* Adafruit.io Setup *********************************/
 
@@ -85,7 +85,7 @@ void setup() {
  
 }
 void loop(){
-
+red_on();
 int   ldrRawData;
   float resistorVoltage, ldrVoltage;
   float ldrResistance;
@@ -113,6 +113,7 @@ int   ldrRawData;
 
    if (isnan(humidity) || isnan(temperature)) {
     Serial.println("Failed to read from DHT sensor!");
+    delay(1000);
     return;
   }
 
@@ -160,10 +161,10 @@ blue_off();
   }
   */
 
-  delay(2000);
+  delay(5000);
   red_off();
   blue_off();
-  ESP.deepSleep(5e6); //20e6 is 2000s
+  //ESP.deepSleep(5e6); //20e6 is 2000s
 }
 
 
