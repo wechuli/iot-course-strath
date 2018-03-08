@@ -56,7 +56,7 @@ void setup() {
   Serial.println(F("Initializing Strath Project Demo....Loading"));
 
   // Connect to WiFi access point.
-  Serial.println(); Serial.println();
+  Serial.println();
   Serial.print("Connecting to ");
   Serial.println(WLAN_SSID);
 

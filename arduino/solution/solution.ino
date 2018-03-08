@@ -12,6 +12,8 @@ DHT dht(DHTPIN, DHTTYPE);
 void setup() {
   Serial.begin(9600);
   Serial.println("Initializing Fake Fire Detector, wait for it");
+  pinMode(red_led,OUTPUT);
+  pinMode(white_led,OUTPUT);
 
   dht.begin();
 }
