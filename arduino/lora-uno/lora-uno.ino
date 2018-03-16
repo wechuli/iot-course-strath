@@ -7,6 +7,7 @@ const char *devAddr = "2601140C";
 const char *nwkSKey = "780593843792C5D0588E762741387ABC";
 const char *appSKey = "149DA9C63CCCFF42C5D8B571554B37A1";
 
+
 #define loraSerial Serial1
 #define debugSerial Serial
 #define DHTPIN 8 
