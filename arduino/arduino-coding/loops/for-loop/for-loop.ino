@@ -12,5 +12,6 @@ void loop(){
     for(count=0;count<=no;count++){  // count must be initialized before we can start using it
         Serial.println(count);//You should see the count printed 6 times with increasing
         delay(1000);
+        
     }
 }
