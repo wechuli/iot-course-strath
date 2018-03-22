@@ -44,7 +44,7 @@ void loop()
 
   // Reading temperature or humidity takes about 250 milliseconds!
   // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
-  float h = dht.readHumidity();
+ /* float h = dht.readHumidity();
   // Read temperature as Celsius (the default)
   float t = dht.readTemperature();
 
@@ -52,6 +52,9 @@ void loop()
     Serial.println("Failed to read from DHT sensor!");
     return;
   }
+  */
+  float h = 56.58;
+  float t = 21.01;
   uint16_t humidity = h*100;
   uint16_t temperature = t*100;
 
