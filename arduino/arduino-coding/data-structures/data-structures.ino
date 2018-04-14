@@ -1,4 +1,7 @@
 float b=25.556;
+f
+float a;
+a=34;
 void setup(){
     //some statement
 }
@@ -21,8 +24,10 @@ char chr_c = 97 ;//declaration of variable with type char and initialize it with
 
 
 int myArray={34,23,67,1,34};
+char food ={'a','b','s'};
+String shopping={"shoes 1","potatoes"};
 int w=myArray[1]
-
+char secnd=food[1];
 int x;
 x=myArray[3];//x now equals 10
 

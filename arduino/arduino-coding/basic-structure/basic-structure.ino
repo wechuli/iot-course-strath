@@ -1,4 +1,6 @@
 #include <DHT.h> 
+#include "WCharacter.h"
+
 /*
 A header file is a file containing C declarations and macro definitions
  to be shared between several source files. You request the use of
@@ -12,7 +14,7 @@ dgdgfjfjfjfj
 
 
 */
-#define some_variable 25.5  //some constants defined in the program
+#define some_variable "25.5"  //some constants defined in the program
 
 void setup(){
 //some statements to initialize your program
@@ -21,6 +23,9 @@ Serial.begin(115200);
 void loop(){
     //some statements you want to always repeat
     Serial.println("Hello World");
+    Serial.println(some_variable);
+    float calc=some_variable*2;
+
     delay(2000);
 }
 
