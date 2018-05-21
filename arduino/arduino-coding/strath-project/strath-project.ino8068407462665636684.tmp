@@ -3,7 +3,7 @@
 #include "Adafruit_MQTT.h"
 #include "Adafruit_MQTT_Client.h"
 
-#define DHTPIN 12
+#define DHTPIN 2
 #define DHTTYPE DHT11
 
 
